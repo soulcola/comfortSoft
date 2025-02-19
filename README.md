@@ -19,7 +19,9 @@ GET "/api/findNthMax"
 7. Приложить инструкцию по сборке и запуску кода
 ```
 -------------------------------------------------------------
+- Clone: `git clone https://github.com/soulcola/comfortSoft.git`
 - Run: `mvn spring-boot:run` in root directory.
 - Swagger UI link: [REST API documentation](http://localhost:8080/)
+- Demo: http://comfortsoft.petrtitov.com/ (тестовый XLSX файл по пути: `/xlsx/test.xlsx`)
 -----------------------------------------------------
 
