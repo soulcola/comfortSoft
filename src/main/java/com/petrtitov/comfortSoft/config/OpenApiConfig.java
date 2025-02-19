@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "REST API documentation",
                 version = "3.0.0",
-                description = "Тестовое задание Петра Титова для Comfort Soft",
+                description = "API для получения N-го максимального числа из XLSX файла",
                 contact = @Contact(name = "Petr Titov", email = "8441404@gmail.com")
         )
 )

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelUtils {
+
     public static List<Integer> readNumbersFromXlsx(String filePath) throws IOException {
         List<Integer> numbers = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(filePath);
@@ -18,15 +19,14 @@ public class ExcelUtils {
             for (Row row : sheet) {
                 Cell cell = row.getCell(0);
                 if (cell != null) {
-                    // Если тип ячейки числовой, то преобразуем в int
                     if (cell.getCellType() == CellType.NUMERIC) {
                         numbers.add((int) cell.getNumericCellValue());
                     } else if (cell.getCellType() == CellType.STRING) {
                         try {
                             numbers.add(Integer.parseInt(cell.getStringCellValue()));
                         } catch (NumberFormatException e) {
-                            throw new IllegalArgumentException("Невозможно преобразовать значение \"" +
-                                    cell.getStringCellValue() + "\" в число.");
+                            throw new IllegalArgumentException("Can't convert value \"" +
+                                    cell.getStringCellValue() + "\" to Integer.");
                         }
                     }
                 }

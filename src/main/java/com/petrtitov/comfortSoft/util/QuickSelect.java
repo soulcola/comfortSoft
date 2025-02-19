@@ -1,8 +1,26 @@
 package com.petrtitov.comfortSoft.util;
 
+import java.util.List;
+
 public class QuickSelect {
 
-    public static int quickSelect(int[] arr, int left, int right, int k) {
+
+    public static int findNthMaxInList(int n, List<Integer> list) {
+        if (list == null || list.isEmpty()) {
+            throw new IllegalArgumentException("List cannot be null or empty");
+        }
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be greater than 0 but was: " + n);
+        }
+        if (n > list.size()) {
+            throw new IllegalArgumentException("n (" + n + ") can not be greater than list size: (" + list.size() + ")");
+        }
+        int[] nums = list.stream().mapToInt(Integer::intValue).toArray();
+        int k = nums.length - n;
+        return quickSelect(nums, 0, nums.length - 1, k);
+    }
+
+    private static int quickSelect(int[] arr, int left, int right, int k) {
         if (left == right) {
             return arr[left];
         }
@@ -19,7 +37,7 @@ public class QuickSelect {
 
     private static int partition(int[] arr, int left, int right) {
         int pivot = arr[right];
-        int i = left; // индекс для разделения
+        int i = left;
         for (int j = left; j < right; j++) {
             if (arr[j] <= pivot) {
                 swap(arr, i, j);

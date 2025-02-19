@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.petrtitov.comfortSoft.config.ErrorType.APP_ERROR;
 import static com.petrtitov.comfortSoft.config.ErrorType.INPUT_ERROR;
@@ -41,9 +39,7 @@ public class RestExceptionHandler {
     }
 
     private static ErrorInfo logAndGetErrorInfo(Exception e, ErrorType errorType, HttpServletRequest request) {
-        log.error("{}: Exception {} at request {}",errorType, e, request.getRequestURI());
-        List<String> errors = new ArrayList<>();
-        errors.add(e.getMessage());
-        return new ErrorInfo(errorType, errors);
+        log.error("{}: Exception {} at request: {}", errorType, e, request.getRequestURI());
+        return new ErrorInfo(errorType, e.getMessage());
     }
 }
