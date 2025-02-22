@@ -8,7 +8,7 @@ LABEL maintainer="8441404@gmail.com"
 EXPOSE 8080
 
 RUN mkdir /xlsx
-COPY src/test/resources/test.xlsx /xlsx/test.xlsx
+COPY src/main/resources/test.xlsx /xlsx/test.xlsx
 
 # The application's jar file
 ARG JAR_FILE=target/comfortSoft-1.0.jar

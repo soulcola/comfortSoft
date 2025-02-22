@@ -1,0 +1,10 @@
+version: '3'
+services:
+  comfort-soft:
+    container_name: comfort-soft
+    build:
+      context: .
+      dockerfile:  Dockerfile
+    ports:
+      - 8882:8080/tcp
+    restart: unless-stopped
