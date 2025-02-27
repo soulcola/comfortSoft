@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comfort-soft
+  labels:
+    app: comfort-soft
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comfort-soft
+  template:
+    metadata:
+      name: comfort-soft
+      labels:
+        app: comfort-soft
+    spec:
+      containers:
+        - name: comfort-soft
+          image: soulcola/comfort-soft
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comfort-soft
+spec:
+  selector:
+    app: comfort-soft
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+  
